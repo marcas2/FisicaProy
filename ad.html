@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calcular tiempo de lanzamiento</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div>
+    <header >
+      <h1>  Calcular tiempo de lanzamiento </h1>
+      </header>
+   <div class="formss">
+    <h2 class="title" >La formula para calcular el tiempo de lanzamiento es:</h2>
+    <h3 id="launchTimeFormula">tiempo de lanzamiento = 2 * velocidad * velocidad * sin(angulo) / gravedad / peso</h3>
+    <input class="datos" type="text" id="velocity" placeholder="Velocidad (m/s)">
+    <input class="datos" type="text" id="gravity" placeholder="Gravedad (m/s²)">
+    <input class="datos" type="text" id="weight" placeholder="Peso (kg)">
+    <input class="datos" type="text" id="angle" placeholder="Ángulo (°)">
+    <button class="boton
+    " id="calculateLaunchTime">Calcular tiempo de lanzamiento</button>
+    <br/><br/>
+    <h3>EL RESULTADO ES:</h3>
+    <h3 class="title2" id="launchTimeResult"></h3>
+  </div>
+  </div>
+
+  <div > 
+    <a href="index.php" class = "btn"> <h2>Volver al inicio</h2></a>
+  </div>
+
+</body>
+<script>
+function calculateLaunchTime() {
+  var velocity = parseFloat(document.getElementById("velocity").value);
+  var gravity = parseFloat(document.getElementById("gravity").value);
+  var weight = parseFloat(document.getElementById("weight").value);
+  var angle = parseFloat(document.getElementById("angle").value) || 0;
+  var radians = angle * Math.PI / 180;
+   var result = 2 * velocity * velocity * Math.sin(radians * Math.PI / 180) / gravity / weight;
+  document.getElementById("launchTimeResult").textContent = result;
+}
+document.getElementById("calculateLaunchTime").addEventListener("click", calculateLaunchTime);
+</script>
+</html>

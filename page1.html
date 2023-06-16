@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Proyectiles</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+<h1>Proyectiles</h1>
+</header>
+<nav class="navbar2">
+<button class="boton" onclick="openFormulaBox()">Open Formula Box</button>
+<button class="boton"  onclick="closeFormulaBox()">Close Formula Box</button>
+</nav>
+<div id="formulaBox" style="display: none;">
+<h2 class="title">Caja de formulas</h2>
+<h3>La formula para un lanzamiento de proyectiles es:</h3>
+<h3>--- v = 2 * g * h * sin(theta) ---</h3>
+<h3>donde:</h3>
+<ul>
+<h3>-v- Es la velocidad inicial del proyectil</h3>
+<h3>-g- es la gravedad(9.8 m/s^2)</h3>
+<h3>-h- es el peso del proyectil</h3>
+<h3>-theta- es el angulo</h3>
+</ul>
+<input class="datos" type="text" id="gravity" placeholder="Gravedad">
+<input class="datos" type="text" id="weight" placeholder="Peso">
+<input class="datos" type="text" id="angle" placeholder="Angulo">
+<button class="boton" onclick="calculate()">Calcular</button>
+<br/><br/>
+<h3>EL RESULTADO ES:</h3>
+<h3 class="title2" id="result"></h3>
+
+<br/><br/>
+<div class="formss">
+<h3>La formula para calcular el angulo es:</h3>
+<h3>--- theta = arctan(y/x) ---</h3>
+<h3>Donde:</h3>
+<ul>
+<h3>-theta- Es el angulo</h3>
+<h3>-y- es la coordenada Y del punto</h3>
+<h3>-x- es la coordenada X del punto</h3>
+</ul>
+<input class="datos" type="text" id="y" placeholder="Y">
+<input class="datos" type="text" id="x" placeholder="X">
+<button class="boton" onclick="calculateAngle()">Calcular angulo</button>
+<br/><br/>
+<h3>EL RESULTADO ES:</h3>
+<h3 class="title2" id="angleResult"></h3>
+</div>
+<br/><br/>
+
+<div > 
+  <a href="index.php" class = "btn"><h2> Volver al inicio </h2></a>
+
+</div>
+
+</body>
+<script>
+function openFormulaBox() {
+  document.getElementById("formulaBox").style.display = "block";
+}
+function closeFormulaBox() {
+  document.getElementById("formulaBox").style.display = "none";
+}
+function calculate() {
+  
+  var gravity = parseFloat(document.getElementById("gravity").value);
+  var weight = parseFloat(document.getElementById("weight").value);
+  var angle = parseFloat(document.getElementById("angle").value) || 0;
+  var result = 2* gravity * weight * Math.sin(angle);
+  document.getElementById("result").innerHTML = result;
+
+  var displacement = velocity * velocity * sin(2 * angle) / 9.8;
+  document.getElementById("displacementResult").innerHTML = displacement;
+
+  var time = 2 * displacement / velocity;
+  document.getElementById("timeResult").innerHTML = time;
+}
+
+function calculateAngle() {
+  var y = parseFloat(document.getElementById("y").value);
+  var x = parseFloat(document.getElementById("x").value);
+  var angle = ((Math.atan(y /x)))*180/3.1416;
+  
+  document.getElementById("angleResult").innerHTML = angle;
+}
+
+</script>
+
+</html>
