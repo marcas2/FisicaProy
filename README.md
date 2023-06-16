@@ -1,0 +1,2 @@
+# FisicaProy
+Calcular la trayectoria 
